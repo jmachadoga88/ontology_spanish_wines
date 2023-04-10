@@ -7,14 +7,22 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="http://www.semanticweb.org/jose/ontologies/2023/3/ontology_spanish_wines">
     <Prefix name="" IRI="http://www.semanticweb.org/jose/ontologies/2023/3/ontology_spanish_wines/"/>
+    <Prefix name="dc" IRI="http://purl.org/dc/elements/1.1/"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="swrl" IRI="http://www.w3.org/2003/11/swrl#"/>
+    <Prefix name="swrlb" IRI="http://www.w3.org/2003/11/swrlb#"/>
+    <Prefix name="ontology_spanish_wines" IRI="http://www.semanticweb.org/jose/ontologies/2023/3/ontology_spanish_wines#"/>
     <Annotation>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <Literal>Creator: Jose Machado Gallego</Literal>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+        <Literal>Jose Machado Gallego</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:rights"/>
+        <Literal>https://creativecommons.org/licenses/by/4.0/</Literal>
     </Annotation>
     <Declaration>
         <Class IRI="#Albarino"/>
@@ -164,67 +172,55 @@
         <NamedIndividual IRI="#Vega_Sicilia"/>
     </Declaration>
     <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:rights"/>
+    </Declaration>
+    <Declaration>
         <AnnotationProperty abbreviatedIRI="rdfs:sameAs"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#Region"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Region"/>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#Cultivate"/>
-                <Class IRI="#Type_of_Wine"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#Cultivate"/>
+            <Class IRI="#Type_of_Wine"/>
+        </ObjectMinCardinality>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Region"/>
-        <ObjectIntersectionOf>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#has"/>
+            <Class IRI="#Winery"/>
+        </ObjectMinCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Type_of_Wine"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isCultivatedIn"/>
             <Class IRI="#Region"/>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#has"/>
-                <Class IRI="#Winery"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
+        </ObjectMinCardinality>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Type_of_Wine"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Type_of_Wine"/>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#isCultivatedIn"/>
-                <Class IRI="#Region"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#Type_of_Wine"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Type_of_Wine"/>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#isProducedIn"/>
-                <Class IRI="#Winery"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isProducedIn"/>
+            <Class IRI="#Winery"/>
+        </ObjectMinCardinality>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Winery"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Winery"/>
-            <ObjectMinCardinality cardinality="1">
-                <ObjectProperty IRI="#produces"/>
-                <Class IRI="#Type_of_Wine"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#produces"/>
+            <Class IRI="#Type_of_Wine"/>
+        </ObjectMinCardinality>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Winery"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Winery"/>
-            <ObjectMaxCardinality cardinality="1">
-                <ObjectProperty IRI="#isLocatedIn"/>
-                <Class IRI="#Region"/>
-            </ObjectMaxCardinality>
-        </ObjectIntersectionOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#isLocatedIn"/>
+            <Class IRI="#Region"/>
+        </ObjectMaxCardinality>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Winery"/>
@@ -351,6 +347,41 @@
         <Class IRI="#White_wine"/>
         <Class IRI="#Type_of_Wine"/>
     </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Albarino"/>
+        <Class IRI="#Cabernet_Sauvignon"/>
+        <Class IRI="#Grenache"/>
+        <Class IRI="#Mencia"/>
+        <Class IRI="#Monastrell"/>
+        <Class IRI="#Montsant_Red"/>
+        <Class IRI="#Priorat_Red"/>
+        <Class IRI="#Ribera_Duero"/>
+        <Class IRI="#Rioja_Red"/>
+        <Class IRI="#Syrah"/>
+        <Class IRI="#Tempranillo"/>
+        <Class IRI="#Toro_Red"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cava"/>
+        <Class IRI="#Sparkling"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Chardonnay"/>
+        <Class IRI="#Rioja_White"/>
+        <Class IRI="#Sauvignon_Blanc"/>
+        <Class IRI="#Verdejo"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Pedro_Ximenez"/>
+        <Class IRI="#Sherry"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Red_wine"/>
+        <Class IRI="#Sparkling_wine"/>
+        <Class IRI="#Sweet_wine"/>
+        <Class IRI="#Unknown"/>
+        <Class IRI="#White_wine"/>
+    </DisjointClasses>
     <ClassAssertion>
         <Class IRI="#Winery"/>
         <NamedIndividual IRI="#Chivite"/>
@@ -550,18 +581,6 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#isLocatedIn"/>
     </FunctionalObjectProperty>
-    <SymmetricObjectProperty>
-        <ObjectProperty IRI="#Cultivate"/>
-    </SymmetricObjectProperty>
-    <SymmetricObjectProperty>
-        <ObjectProperty IRI="#has"/>
-    </SymmetricObjectProperty>
-    <SymmetricObjectProperty>
-        <ObjectProperty IRI="#isCultivatedIn"/>
-    </SymmetricObjectProperty>
-    <SymmetricObjectProperty>
-        <ObjectProperty IRI="#isLocatedIn"/>
-    </SymmetricObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#Cultivate"/>
         <Class IRI="#Region"/>
@@ -615,519 +634,31 @@
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="#acidity"/>
-        <Class IRI="#Albarino"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Cabernet_Sauvignon"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Cava"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Chardonnay"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Grenache"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Mencia"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Monastrell"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Montsant_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#NA"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Pedro_Ximenez"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Priorat_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Ribera_Duero"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Rioja_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Rioja_White"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Sauvignon_Blanc"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Sherry"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Sparkling"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Syrah"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Tempranillo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Toro_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#acidity"/>
-        <Class IRI="#Verdejo"/>
+        <Class IRI="#Type_of_Wine"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#body"/>
-        <Class IRI="#Albarino"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Cabernet_Sauvignon"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Cava"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Chardonnay"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Grenache"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Mencia"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Monastrell"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Montsant_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#NA"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Pedro_Ximenez"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Priorat_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Ribera_Duero"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Rioja_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Rioja_White"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Sauvignon_Blanc"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Sherry"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Sparkling"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Syrah"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Tempranillo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Toro_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#body"/>
-        <Class IRI="#Verdejo"/>
+        <Class IRI="#Type_of_Wine"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#country"/>
         <Class IRI="#Region"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#country"/>
+        <DataProperty IRI="#num_reviews"/>
         <Class IRI="#Type_of_Wine"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#country"/>
-        <Class IRI="#Winery"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Albarino"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Cabernet_Sauvignon"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Cava"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Chardonnay"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Grenache"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Mencia"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Monastrell"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Montsant_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#NA"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Pedro_Ximenez"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Priorat_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Ribera_Duero"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Rioja_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Rioja_White"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Sauvignon_Blanc"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Sherry"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Sparkling"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Syrah"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Tempranillo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Toro_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#num_reviews"/>
-        <Class IRI="#Verdejo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="#price"/>
-        <Class IRI="#Albarino"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Cabernet_Sauvignon"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Cava"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Chardonnay"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Grenache"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Mencia"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Monastrell"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Montsant_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#NA"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Pedro_Ximenez"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Priorat_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Ribera_Duero"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Rioja_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Rioja_White"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Sauvignon_Blanc"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Sherry"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Sparkling"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Syrah"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Tempranillo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Toro_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#price"/>
-        <Class IRI="#Verdejo"/>
+        <Class IRI="#Type_of_Wine"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#rating"/>
-        <Class IRI="#Albarino"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Cabernet_Sauvignon"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Cava"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Chardonnay"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Grenache"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Mencia"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Monastrell"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Montsant_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#NA"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Pedro_Ximenez"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Priorat_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Ribera_Duero"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Rioja_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Rioja_White"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Sauvignon_Blanc"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Sherry"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Sparkling"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Syrah"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Tempranillo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Toro_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#rating"/>
-        <Class IRI="#Verdejo"/>
+        <Class IRI="#Type_of_Wine"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#year"/>
-        <Class IRI="#Albarino"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Cabernet_Sauvignon"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Cava"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Chardonnay"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Grenache"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Mencia"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Monastrell"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Montsant_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#NA"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Pedro_Ximenez"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Priorat_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Ribera_Duero"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Rioja_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Rioja_White"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Sauvignon_Blanc"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Sherry"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Sparkling"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Syrah"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Tempranillo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Toro_Red"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#year"/>
-        <Class IRI="#Verdejo"/>
+        <Class IRI="#Type_of_Wine"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#year_of_foundation"/>
@@ -1187,7 +718,7 @@
                 <Variable IRI="urn:swrl:var#x"/>
                 <Variable IRI="urn:swrl:var#y"/>
             </ObjectPropertyAtom>
-            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#contains">
+            <BuiltInAtom abbreviatedIRI="swrlb:contains">
                 <Variable IRI="urn:swrl:var#y"/>
                 <Literal>Chivite</Literal>
             </BuiltInAtom>
@@ -1245,9 +776,19 @@
         <Literal>Indicate the type of red wine Albariño</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Albarino</IRI>
+        <Literal>Albarino</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Cabernet_Sauvignon</IRI>
         <Literal>Indicate the type of red wine Cabernet Sauvignon</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cabernet_Sauvignon</IRI>
+        <Literal>Cabernet_Sauvignon</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1255,9 +796,24 @@
         <Literal>Indicate the type of sparkling  wine Cava</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cava</IRI>
+        <Literal>Cava</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Chardonnay</IRI>
         <Literal>Indicate the type of white  wine Chardonnay</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Chardonnay</IRI>
+        <Literal>Chardonnay</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Chivite</IRI>
+        <Literal>Chivite</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:sameAs"/>
@@ -1270,9 +826,19 @@
         <Literal>Indicates that a type of wine is cultivated in a region</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cultivate</IRI>
+        <Literal>Cultivate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Grenache</IRI>
         <Literal>Indicate the type of red wine Grenache</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Grenache</IRI>
+        <Literal>Grenache</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1280,9 +846,19 @@
         <Literal>Indicate the type of red wine Mencia</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Mencia</IRI>
+        <Literal>Mencia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Monastrell</IRI>
         <Literal>Indicate the type of red wine Monastrell</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Monastrell</IRI>
+        <Literal>Monastrell</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1290,9 +866,29 @@
         <Literal>Indicate the type of red wine Montsant Red</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Montsant_Red</IRI>
+        <Literal>Montsant_Red</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#NA</IRI>
         <Literal>Indicates unclassified wine type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NA</IRI>
+        <Literal>NA</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Navarra</IRI>
+        <Literal>Navarra</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Navarra_Coleccion_125_Blanco</IRI>
+        <Literal>Navarra_Coleccion_125_Blanco</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1300,9 +896,19 @@
         <Literal>Indicate the type of sweet  wine Pedro Ximenez</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pedro_Ximenez</IRI>
+        <Literal>Pedro_Ximenez</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Priorat_Red</IRI>
         <Literal>Indicate the type of red wine Priorat Red</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Priorat_Red</IRI>
+        <Literal>Priorat_Red</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1310,14 +916,34 @@
         <Literal>Indicates Spanish red wines</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Red_wine</IRI>
+        <Literal>Red_wine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Region</IRI>
         <Literal>Indicates the region where a wine is grown</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Region</IRI>
+        <Literal>Region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Ribera_Duero</IRI>
         <Literal>Indicate the type of red wine Ribera Duero</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Ribera_Duero</IRI>
+        <Literal>Ribera_Duero</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Ribera_del_Duero</IRI>
+        <Literal>Ribera_del_Duero</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:sameAs"/>
@@ -1330,9 +956,19 @@
         <Literal>Indicate the type of red wine Rioja Red</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Rioja_Red</IRI>
+        <Literal>Rioja_Red</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Rioja_White</IRI>
         <Literal>Indicate the type of white  wine Rioja White</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Rioja_White</IRI>
+        <Literal>Rioja_White</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1340,9 +976,19 @@
         <Literal>Indicate the type of white  wine Sauvignon Blanc</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sauvignon_Blanc</IRI>
+        <Literal>Sauvignon_Blanc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Sherry</IRI>
         <Literal>Indicate the type of sweet  wine Sherry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sherry</IRI>
+        <Literal>Sherry</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1350,9 +996,19 @@
         <Literal>Indicate the type of sparkling wine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sparkling</IRI>
+        <Literal>Sparkling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Sparkling_wine</IRI>
         <Literal>Indicates Spanish sparkling wines</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sparkling_wine</IRI>
+        <Literal>Sparkling_wine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1360,9 +1016,19 @@
         <Literal>Indicates Spanish sweet wines</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sweet_wine</IRI>
+        <Literal>Sweet_wine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Syrah</IRI>
         <Literal>Indicate the type of red wine Syrah</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Syrah</IRI>
+        <Literal>Syrah</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1370,9 +1036,19 @@
         <Literal>Indicate the type of red wine Tempranillo</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tempranillo</IRI>
+        <Literal>Tempranillo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Toro_Red</IRI>
         <Literal>Indicate the type of red wine Toro Red</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Toro_Red</IRI>
+        <Literal>Toro_Red</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1380,9 +1056,29 @@
         <Literal>Indicates the different types of Spanish wine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Type_of_Wine</IRI>
+        <Literal>Type_of_Wine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Unico</IRI>
+        <Literal>Unico</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Unknown</IRI>
         <Literal>Indicates Spanish wines that are not classified</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Unknown</IRI>
+        <Literal>Unknown</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Vega_Sicilia</IRI>
+        <Literal>Vega_Sicilia</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:sameAs"/>
@@ -1395,9 +1091,19 @@
         <Literal>Indicate the type of white  wine Verdejo</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Verdejo</IRI>
+        <Literal>Verdejo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#White_wine</IRI>
         <Literal>Indicates Spanish white wines</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#White_wine</IRI>
+        <Literal>White_wine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1405,9 +1111,19 @@
         <Literal>Indicates Spanish wineries</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Winery</IRI>
+        <Literal>Winery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#acidity</IRI>
         <Literal>Indicates a wine&apos;s acidity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#acidity</IRI>
+        <Literal>acidity</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1415,9 +1131,19 @@
         <Literal>Indicates a wine&apos;s body</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#body</IRI>
+        <Literal>body</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#country</IRI>
         <Literal>Indicates the country the wine comes from</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#country</IRI>
+        <Literal>country</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1425,9 +1151,19 @@
         <Literal>Indicates that a region has a winery</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#has</IRI>
+        <Literal>has</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#isCultivatedIn</IRI>
         <Literal>Indicates that a type of wine is grown in a particular region.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isCultivatedIn</IRI>
+        <Literal>isCultivatedIn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1435,9 +1171,19 @@
         <Literal>Indicates that a winery is located in a region</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isLocatedIn</IRI>
+        <Literal>isLocatedIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#isProducedIn</IRI>
         <Literal>Indicates that a type of wine is produced in a winery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isProducedIn</IRI>
+        <Literal>isProducedIn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1445,9 +1191,19 @@
         <Literal>Indicates the number of reviews that a wine has</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#num_reviews</IRI>
+        <Literal>num_reviews</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#price</IRI>
         <Literal>Indicates the price of a wine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#price</IRI>
+        <Literal>price</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1455,9 +1211,19 @@
         <Literal>Indicates that a winery produces one type of wine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#produces</IRI>
+        <Literal>produces</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#rating</IRI>
         <Literal>Indicates the rating of a wine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#rating</IRI>
+        <Literal>rating</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1465,9 +1231,19 @@
         <Literal>Indicate the year of harvest of a wine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#year</IRI>
+        <Literal>year</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#year_of_foundation</IRI>
         <Literal>Indicates the year of foundation of the winery where the wine is produced.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#year_of_foundation</IRI>
+        <Literal>year_of_foundation</Literal>
     </AnnotationAssertion>
 </Ontology>
 
