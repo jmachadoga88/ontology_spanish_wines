@@ -112,12 +112,6 @@
         <Class IRI="#Winery"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#Cultivate"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Has"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#IsCultivatedIn"/>
     </Declaration>
     <Declaration>
@@ -180,55 +174,6 @@
     <Declaration>
         <AnnotationProperty abbreviatedIRI="rdfs:sameAs"/>
     </Declaration>
-    <EquivalentClasses>
-        <Class IRI="#Region"/>
-        <ObjectMinCardinality cardinality="1">
-            <ObjectProperty IRI="#Cultivate"/>
-            <Class IRI="#Wine"/>
-        </ObjectMinCardinality>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#Region"/>
-        <ObjectMinCardinality cardinality="1">
-            <ObjectProperty IRI="#Has"/>
-            <Class IRI="#Winery"/>
-        </ObjectMinCardinality>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#Wine"/>
-        <ObjectMinCardinality cardinality="1">
-            <ObjectProperty IRI="#IsCultivatedIn"/>
-            <Class IRI="#Region"/>
-        </ObjectMinCardinality>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#Wine"/>
-        <ObjectMinCardinality cardinality="1">
-            <ObjectProperty IRI="#IsProducedIn"/>
-            <Class IRI="#Winery"/>
-        </ObjectMinCardinality>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#Winery"/>
-        <ObjectMinCardinality cardinality="1">
-            <ObjectProperty IRI="#Produces"/>
-            <Class IRI="#Wine"/>
-        </ObjectMinCardinality>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#Winery"/>
-        <ObjectMaxCardinality cardinality="1">
-            <ObjectProperty IRI="#IsLocatedIn"/>
-            <Class IRI="#Region"/>
-        </ObjectMaxCardinality>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#Winery"/>
-        <DataExactCardinality cardinality="1">
-            <DataProperty IRI="#YearOfFoundation"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataExactCardinality>
-    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#Albarino"/>
         <Class IRI="#RedWine"/>
@@ -347,6 +292,27 @@
         <Class IRI="#WhiteWine"/>
         <Class IRI="#Wine"/>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Wine"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#IsCultivatedIn"/>
+            <Class IRI="#Region"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Winery"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#IsLocatedIn"/>
+            <Class IRI="#Region"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Winery"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#YearOfFoundation"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
     <DisjointClasses>
         <Class IRI="#Albarino"/>
         <Class IRI="#CabernetSauvignon"/>
@@ -412,21 +378,6 @@
         <NamedIndividual IRI="#Navarra"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#Produces"/>
-        <NamedIndividual IRI="#Chivite"/>
-        <NamedIndividual IRI="#Chivite"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#Cultivate"/>
-        <NamedIndividual IRI="#Navarra"/>
-        <NamedIndividual IRI="#NavarraColeccion125Blanco"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#Has"/>
-        <NamedIndividual IRI="#Navarra"/>
-        <NamedIndividual IRI="#Chivite"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#IsCultivatedIn"/>
         <NamedIndividual IRI="#NavarraColeccion125Blanco"/>
         <NamedIndividual IRI="#Navarra"/>
@@ -435,16 +386,6 @@
         <ObjectProperty IRI="#IsProducedIn"/>
         <NamedIndividual IRI="#NavarraColeccion125Blanco"/>
         <NamedIndividual IRI="#Chivite"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#Cultivate"/>
-        <NamedIndividual IRI="#RiberaDelDuero"/>
-        <NamedIndividual IRI="#Unico"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#Has"/>
-        <NamedIndividual IRI="#RiberaDelDuero"/>
-        <NamedIndividual IRI="#VegaSicilia"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#IsCultivatedIn"/>
@@ -461,16 +402,6 @@
         <NamedIndividual IRI="#VegaSicilia"/>
         <NamedIndividual IRI="#RiberaDelDuero"/>
     </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#Produces"/>
-        <NamedIndividual IRI="#VegaSicilia"/>
-        <NamedIndividual IRI="#Unico"/>
-    </ObjectPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#Country"/>
-        <NamedIndividual IRI="#Chivite"/>
-        <Literal>Spain</Literal>
-    </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#YearOfFoundation"/>
         <NamedIndividual IRI="#Chivite"/>
@@ -490,11 +421,6 @@
         <DataProperty IRI="#Body"/>
         <NamedIndividual IRI="#NavarraColeccion125Blanco"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">4</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#Country"/>
-        <NamedIndividual IRI="#NavarraColeccion125Blanco"/>
-        <Literal>Spain</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#NumReviews"/>
@@ -532,11 +458,6 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#Country"/>
-        <NamedIndividual IRI="#Unico"/>
-        <Literal>Spain</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="#NumReviews"/>
         <NamedIndividual IRI="#Unico"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">1793</Literal>
@@ -557,23 +478,10 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2009</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#Country"/>
-        <NamedIndividual IRI="#VegaSicilia"/>
-        <Literal>Spain</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="#YearOfFoundation"/>
         <NamedIndividual IRI="#VegaSicilia"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">1864</Literal>
     </DataPropertyAssertion>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#Cultivate"/>
-        <ObjectProperty IRI="#IsCultivatedIn"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#Has"/>
-        <ObjectProperty IRI="#IsLocatedIn"/>
-    </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#IsProducedIn"/>
         <ObjectProperty IRI="#Produces"/>
@@ -582,14 +490,6 @@
         <ObjectProperty IRI="#IsLocatedIn"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#Cultivate"/>
-        <Class IRI="#Region"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#Has"/>
-        <Class IRI="#Region"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#IsCultivatedIn"/>
         <Class IRI="#Wine"/>
     </ObjectPropertyDomain>
@@ -605,14 +505,6 @@
         <ObjectProperty IRI="#Produces"/>
         <Class IRI="#Winery"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#Cultivate"/>
-        <Class IRI="#Wine"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#Has"/>
-        <Class IRI="#Winery"/>
-    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#IsCultivatedIn"/>
         <Class IRI="#Region"/>
@@ -852,16 +744,6 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Cultivate</IRI>
-        <Literal>Indicates that a type of wine is cultivated in a region</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#Cultivate</IRI>
-        <Literal>Cultivate</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Grenache</IRI>
         <Literal>Indicate the type of red wine Grenache</Literal>
     </AnnotationAssertion>
@@ -869,16 +751,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#Grenache</IRI>
         <Literal>Grenache</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Has</IRI>
-        <Literal>Indicates that a region has a winery</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#Has</IRI>
-        <Literal>Has</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -903,12 +775,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#IsProducedIn</IRI>
-        <Literal>Indicates that a type of wine is produced in a winery</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#IsProducedIn</IRI>
-        <Literal>IsProducedIn</Literal>
+        <Literal>Indicates that a wine is produced in a winery</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1003,12 +870,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Produces</IRI>
-        <Literal>Indicates that a winery produces one type of wine</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#Produces</IRI>
-        <Literal>Produces</Literal>
+        <Literal>Indicates that a winery produces a wine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
